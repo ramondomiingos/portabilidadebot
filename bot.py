@@ -20,12 +20,12 @@ def consulta(param):
     st ='';  
     for p in soup.findAll('span', {"class": "lead laranja"}):
         if(i==0):
-            st = st+"** Operadora: **"
+            st = st+" *Operadora:*"
         if(i==1):
-            st = st+"** Portado: **"
+            st = st+" *Portado:* "
         if(i==2):
-            st = st+" ** Numero: **"
-        st= st +" "+ p.text+"  "
+            st = st+" *Numero:* "
+        st= st +" _"+ p.text+"_  \n"
         i = i+1
     return st
 
@@ -46,7 +46,7 @@ def handle(msg):
     if command == '/start':
            bot.sendMessage(chat_id, "OLa, SOu um bot que identifica a operadora de um contato!")
     elif(command):
-          bot.sendMessage(chat_id, consulta(command))
+          bot.sendMessage(chat_id, consulta(command), parse_mode='Markdown')
     else:
             bot.sendMessage(chat_id, "Apenos entendo contatos, vcard ou numero de telefone xx12341234")
 
